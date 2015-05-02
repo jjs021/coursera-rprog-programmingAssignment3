@@ -4,7 +4,7 @@ rankhospital <- function(state, outcome, num = "best",
   ## Read outcome data
   outcomeData <- readCsvDir(datadir, csv)
   ## Convert data for the 30 day mortality of the outcomes to numeric
-  envValsAsNumeric(outcomeData, outcomes)
+  envValsAsNumeric(environment(), "outcomeData", outcomes)
   ## Check that state and outcome are valid
   stopifbad(state, outcome, outcomeData)
   if (num != "best" && num != "worst" && is.na(as.numeric(num))) {

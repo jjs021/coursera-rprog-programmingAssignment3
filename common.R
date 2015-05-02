@@ -22,12 +22,18 @@ readCsvDir <- function(datadir, csv) {
 
 
 ## Convert data for the 30 day mortality of the outcomes to numeric
-## by passing in outcomes as the env and outcome data.
-envValsAsNumeric <- function(data, env) {
-  stopifnot(!missing(env), !missing(data))
+## by passing in outcomes as the env and outcome data's variable name.
+## UNFORTUNATELY ASSIGNMENTS DON'T APPLY TO THE CALLING SCOPE
+## SO THE SCOPE ENVIRONMENT NEEDS TO BE PASSED
+## FOR OVERWROUGHT PASS-BY-REFERECE; SERIOUSLY R CAN ... ITSELF
+envValsAsNumeric <- function(dataenv, dataname, env) {
+  stopifnot(!missing(dataenv), !missing(dataname),
+            exists(dataname, where=dataenv), !missing(env))
+  data<-get(dataname, pos=dataenv)
   for (o in ls(env)) {
     data[, env[[o]]] <- as.numeric(data[, env[[o]]])
   }
+  assign(dataname, data, pos=dataenv)
 }
 
 ## Stops if the state or outcome are not valid
