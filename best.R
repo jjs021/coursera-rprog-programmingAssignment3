@@ -5,7 +5,8 @@ best <- function(state, outcome, datadir = NULL, csv = "outcome-of-care-measures
   ## Convert data for the 30 day mortality of the outcomes to numeric
   envValsAsNumeric(environment(), "outcomeData", outcomes)
   ## Check that state and outcome are valid
-  stopifbad(state, outcome, outcomeData)
+  stopifbadstate(state, outcomeData)
+  stopifbadoutcome(outcome)
   ## Return hospital name in that state with lowest 30-day death
   ## rate
   outcomeState <- subset(outcomeData, outcomeData[, 7] == state)

@@ -37,13 +37,28 @@ envValsAsNumeric <- function(dataenv, dataname, env) {
   assign(dataname, data, pos=dataenv)
 }
 
-## Stops if the state or outcome are not valid
-stopifbad <- function(state, outcome, data) {
-  ## Check that state and outcome are valid
+## Stops if the state is not valid
+stopifbadstate <- function(state, data) {
+  ## Check that state is valid
   if (missing(state) || !(state %in% data[, 7])) {
     stop("invalid state")
   }
+}
+
+## Stops if the state or outcome are not valid
+stopifbadoutcome <- function(outcome) {
+  ## Check if the outcome is valid
   if (missing(outcome) || !(outcome %in% ls(outcomes))) {
     stop("invalid outcome")
+  }
+}
+
+## Stops if the num is valid
+stopifbadnum <- function(num) {
+  ## Check that num is valid
+  if (missing(num)
+      || (num != "best" && num != "worst"
+      && is.na(as.numeric(num)))) {
+    stop("invalid num")
   }
 }
