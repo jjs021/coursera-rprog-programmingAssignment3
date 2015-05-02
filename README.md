@@ -1,4 +1,4 @@
-Programming Assignment 3 by jjs02
+Programming Assignment 3 by jjs021
 =================================
 Coursera R Programming Class 013 2015-04...05
 ---------------------------------------------
