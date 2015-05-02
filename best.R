@@ -1,5 +1,6 @@
 source("common.R")
-best <- function(state, outcome, datadir = NULL, csv = "outcome-of-care-measures.csv") {
+best <- function(state, outcome,
+                 datadir = "data", csv = "outcome-of-care-measures.csv") {
   ## Read outcome data
   outcomeData <- readCsvDir(datadir, csv)
   ## Convert data for the 30 day mortality of the outcomes to numeric

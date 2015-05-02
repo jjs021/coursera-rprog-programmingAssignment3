@@ -1,6 +1,6 @@
 source("common.R")
 rankall <- function(outcome, num = "best",
-                         datadir=NULL, csv="outcome-of-care-measures.csv") {
+                         datadir="data", csv="outcome-of-care-measures.csv") {
   ## Read outcome data
   outcomeData <- readCsvDir(datadir, csv)
   ## Convert data for the 30 day mortality of the outcomes to numeric
