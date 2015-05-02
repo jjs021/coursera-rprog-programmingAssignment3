@@ -17,7 +17,8 @@ readCsvDir <- function(datadir, csv) {
   if (!is.null(datadir)) {
     file <- paste(datadir,csv,sep="/")
   }
-  read.csv(file, colClasses = "character")
+  read.csv(file, colClasses = "character", stringsAsFactors = FALSE,
+           na.strings="Not Available")
 }
 
 
