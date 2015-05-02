@@ -14,8 +14,8 @@ rankhospital <- function(state, outcome, num = "best",
   ## 30-day death rate
   col <- outcomes[[outcome]]
   outcomeState <- subset(outcomeData, outcomeData[, 7] == state
-                         & !is.na(outcome[,col])
-  outcomeState <- outcomeState[order(outcomeState[,col], outcomeState[,2]),]
+                         & !is.na(outcomeData[, col]))
+  outcomeState <- outcomeState[order(outcomeState[, col], outcomeState[, 2]),]
   if (num == "best") {
     outcomeState[1, 2]
   } else {
